@@ -2,11 +2,11 @@
 
 > **Empowering Kenyan Farmers and SACCOs with AI-Driven Credit Decisions**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ngao-labs-project.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://ngao-labs-project.streamlit.app](https://ngaolabcpstoneproject-a8usq8grgsent27ovza4jd.streamlit.app/))
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-An end-to-end Machine Learning and Explainable AI (XAI) solution for predicting micro-loan defaults in agricultural finance. Built as a capstone project for **Ngao Labs**, this system evaluates loan requests against historical credit performance, transaction behavior, and applicant demographics — while providing transparent, per-prediction explanations using SHAP.
+An end-to-end Machine Learning and Explainable AI (XAI) solution for predicting micro-loan defaults in agricultural finance. Built as a capstone project for **Ngao Labs**.
 
 ---
 
@@ -30,7 +30,7 @@ An end-to-end Machine Learning and Explainable AI (XAI) solution for predicting 
 
 ## 🎯 Problem Statement
 
-Kenyan microfinance institutions and SACCOs face significant financial risk from loan defaults in the agricultural sector. Manual credit assessments are slow, inconsistent, and prone to bias. This project automates default risk prediction by leveraging machine learning, enabling:
+Kenyan microfinance institutions and SACCOs face significant financial risk from loan defaults in the agricultural sector. Manual credit assessments are slow, inconsistent, and prone to bias. This pro[...]
 
 - **Faster loan processing** with real-time risk scoring
 - **Reduced default rates** through data-driven decision-making
@@ -51,7 +51,7 @@ Kenyan microfinance institutions and SACCOs face significant financial risk from
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 ```mermaid
 graph LR
@@ -128,11 +128,11 @@ The project uses three relational datasets from a Kenyan micro-lending instituti
 
 | Chart | Description |
 |---|---|
-| `AUC & ROC Curves.png` | ROC curves comparing all model architectures |
-| `Comparative F1 score with SMOTE.png` | F1-score improvements after SMOTE |
-| `Confusion Matrixes.png` | Baseline confusion matrices |
-| `Confusion Matrixes with tuned XGboost threshold.png` | Recall-optimized confusion matrices |
-| `Data distribution and Correlation.png` | EDA: class distribution and feature correlations |
+| ![AUC & ROC Curves](training%20_images/AUC%20%26%20ROC%20Curves.png) | ROC curves comparing all model architectures |
+| ![Comparative F1 score with SMOTE](training%20_images/Comparative%20F1%20score%20with%20SMOTE.png) | F1-score improvements after SMOTE |
+| ![Confusion Matrixes](training%20_images/Confusion%20Matrixes.png) | Baseline confusion matrices |
+| ![Confusion Matrixes with tuned XGBoost threshold](training%20_images/Confusion%20Matrixes%20with%20tuned%20XGboost%20threshold.png) | Recall-optimized confusion matrices |
+| ![Data distribution and Correlation](training%20_images/Data%20distribution%20and%20Correlation.png) | EDA: class distribution and feature correlations |
 
 </details>
 
@@ -160,6 +160,16 @@ The app provides:
 1. A clean input form for loan and applicant details
 2. A prediction result with confidence percentage
 3. A detailed SHAP explanation section showing which factors influenced the decision
+
+Below are example screenshots from the running app. 
+
+![SHAP explanation (light)](webapp/Screenshots/AI_explanations_lightmode.png)
+
+![App form (dark)](webapp/Screenshots/Webpage_darkmode.png)
+
+![Summary (light)](webapp/Screenshots/AI_summary_section.png)
+
+![App form (light)](webapp/Screenshots/Webpage_lightmode.png)
 
 ---
 
@@ -205,7 +215,7 @@ This project is configured for seamless deployment on [Streamlit Community Cloud
 2. Go to [share.streamlit.io](https://share.streamlit.io)
 3. Connect your GitHub repository: `KalonzoBrian/Ngao-Labs-Project`
 4. Set the **Main file path** to: `webapp/app.py`
-5. Click **Deploy**
+5. Click Deploy`
 
 > **Note**: The `Model/` directory containing `loan_preprocessor.joblib` and `xgb_tuned_baseline.json` must be included in the repository for deployment to work.
 
@@ -219,6 +229,7 @@ Ngao-Labs-Project/
 ├── README.md                          # This file
 ├── .gitignore                         # Git ignore rules
 ├── rebuild_preprocessor.py            # Script to rebuild preprocessor with current sklearn
+├── requirements.txt                   # Root-level dependencies
 ├── run_webapp.bat                     # Windows batch launcher
 │
 ├── Model/                             # Trained model artifacts
@@ -226,37 +237,49 @@ Ngao-Labs-Project/
 │   ├── xgb_tuned_baseline.json        # Tuned XGBoost model
 │   └── shallow_mlp_state_dict.pth     # PyTorch MLP weights
 │
-├── webapp/                            # Streamlit web application
-│   ├── .streamlit/
-│   │   └── config.toml                # Green theme configuration
-│   ├── app.py                         # Main Streamlit application
-│   ├── model_handler.py               # Model loading, prediction & SHAP
-│   └── requirements.txt               # Python dependencies
+├── dataset/                           # Training datasets
+│   ├── traindemographics.csv
+│   ├── trainprevloans.csv
+│   └── trainperf.csv
 │
-├── Agricultural Micro-Loan Default Prediction.ipynb  # Full analysis notebook
+├── notebooks/   # Jupyter notebooks & analysis
+│   ├── 01_eda.ipynb
+│   ├── 02_preprocessing.ipynb
+│   ├── 03_modelling.ipynb
+│   ├── 04_evaluation.ipynb
+│   └── Agricultural_Micro_Loan_Default_Prediction.ipynb notebooks
+|         
 │
-├── Findings.docx                      # Project findings document
-├── Project Proposal.docx              # Capstone project proposal
-├── Break Week - Ngao Labs.pdf         # Assignment brief
+├── reports/                           # Project documentation & findings
+│   ├── Findings.docx
+│   ├── Project Proposal.docx
+│   └── Break Week - Ngao Labs.pdf
 │
-├── *.png                              # Model performance visualizations
+├── training_images/                   # Model performance visualizations
 │   ├── AUC & ROC Curves.png
 │   ├── Comparative F1 score with SMOTE.png
 │   ├── Confusion Matrixes.png
-│   ├── Data distribution and Correlation.png
-│   └── ...
+│   ├── Confusion Matrixes with tuned XGboost threshold.png
+│   └── Data distribution and Correlation.png
 │
-└── training datasets/                 # Raw training data (not pushed to GitHub)
-    ├── traindemographics.csv
-    ├── trainperf.csv
-    └── trainprevloans.csv
+└── webapp/                            # Streamlit web application
+    ├── .streamlit/
+    │   └── config.toml                # Green theme configuration
+    ├── app.py                         # Main Streamlit application
+    ├── model_handler.py               # Model loading, prediction & SHAP
+    ├── requirements.txt               # Web app dependencies
+    └── Screenshots/                   # App screenshots
+        ├── AI_explanations_lightmode.png
+        ├── AI_summary_section.png
+        ├── Webpage_darkmode.png
+        └── Webpage_lightmode.png
 ```
 
 ---
 
 ## 🔑 Key Findings
 
-1. **Top Risk Drivers**: Repayment delays (`mean_repay_delay`, `max_repay_delay`), `late_repayment_ratio`, and high loan intensity (`loanamount / termdays`) are the strongest predictors of future default.
+1. **Top Risk Drivers**: Repayment delays (`mean_repay_delay`, `max_repay_delay`), `late_repayment_ratio`, and high loan intensity (`loanamount / termdays`) are the strongest predictors of future defa[...]
 
 2. **Threshold Tuning > SMOTE**: Adjusting the XGBoost classification threshold (from 0.5 to ~0.25) was more effective than SMOTE alone for catching actual defaults.
 
@@ -272,11 +295,11 @@ This project implements several Responsible AI practices:
 
 - **Explainability**: Every prediction includes SHAP-based feature impact analysis, providing loan officers with clear reasoning behind each recommendation.
 
-- **Fairness Audit**: Disaggregated AUC-ROC analysis across employment status sub-groups (`Permanent`, `Self-Employed`, `Student`, `Unemployed`, `Retired`) demonstrated consistent model performance, reducing algorithmic bias risk.
+- **Fairness Audit**: Disaggregated AUC-ROC analysis across employment status sub-groups (`Permanent`, `Self-Employed`, `Student`, `Unemployed`, `Retired`) demonstrated consistent model performance ac[...]
 
-- **Transparency Disclaimer**: The web application includes a prominent notice that the AI is a decision-support tool — not a replacement for human judgment, institutional policies, and regulatory guidelines.
+- **Transparency Disclaimer**: The web application includes a prominent notice that the AI is a decision-support tool not a replacement for human judgment, institutional policies, and regulatory check[...]
 
-- **No Black Box**: The system does not simply output a "Yes/No" — it explains *why*, showing which specific factors (loan amount, repayment history, employment status, etc.) influenced the decision.
+- **No Black Box**: The system does not simply output a "Yes/No" — it explains *why*, showing which specific factors (loan amount, repayment history, employment status, etc.) influenced the decision[...]
 
 ---
 
@@ -284,7 +307,7 @@ This project implements several Responsible AI practices:
 
 | Name | Role |
 |---|---|
-| **Ngao Labs Capstone Team** | Data Science, ML Engineering, Web Development |
+| Ogola Peter, Brian Kitheka, Ochieng Otula | Data Science, ML Engineering, Web Development |
 
 ---
 
@@ -296,8 +319,8 @@ This project is developed as part of the Ngao Labs Capstone Program.
 
 <div align="center">
 
-**Built with ❤️ for Kenyan Agricultural Finance**
+**Built for Kenyan Agricultural Finance**
 
-*Empowering farmers, one loan at a time* 🌾
+*Empowering farmers, one loan at a time* 
 
 </div>
